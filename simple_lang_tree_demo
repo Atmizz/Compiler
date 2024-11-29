@@ -1,0 +1,119 @@
+digraph {
+	0 [label=start]
+	1 [label=assign_stmt]
+	0 -> 1
+	2 [label=int_type]
+	1 -> 2
+	3 [label=assign_stmt2]
+	1 -> 3
+	4 [label=cnt]
+	3 -> 4
+	5 [label=number]
+	3 -> 5
+	6 [label=0]
+	5 -> 6
+	7 [label=func_def_stmt]
+	0 -> 7
+	8 [label=fib]
+	7 -> 8
+	9 [label=arg_list]
+	7 -> 9
+	10 [label=arg]
+	9 -> 10
+	11 [label=int_type]
+	10 -> 11
+	12 [label=x]
+	10 -> 12
+	13 [label=arg]
+	9 -> 13
+	14 [label=int_type]
+	13 -> 14
+	15 [label=y]
+	13 -> 15
+	16 [label=block_stmt]
+	7 -> 16
+	17 [label=print_stmt]
+	16 -> 17
+	18 [label=print_factor_stmt]
+	17 -> 18
+	19 [label=string]
+	18 -> 19
+	20 [label="\"fib x\""]
+	19 -> 20
+	21 [label=print_factor_stmt]
+	17 -> 21
+	22 [label=var]
+	21 -> 22
+	23 [label=x]
+	22 -> 23
+	24 [label=None]
+	17 -> 24
+	25 [label=None]
+	17 -> 25
+	26 [label=if_else_stmt]
+	16 -> 26
+	27 [label=if_stmt]
+	26 -> 27
+	28 [label=condition_func]
+	27 -> 28
+	29 [label=equal]
+	28 -> 29
+	30 [label=var]
+	29 -> 30
+	31 [label=cnt]
+	30 -> 31
+	32 [label=number]
+	29 -> 32
+	33 [label=5]
+	32 -> 33
+	34 [label=block_stmt]
+	27 -> 34
+	35 [label=return_stmt]
+	34 -> 35
+	36 [label=None]
+	35 -> 36
+	37 [label=self_add]
+	16 -> 37
+	38 [label=cnt]
+	37 -> 38
+	39 [label=print_stmt]
+	16 -> 39
+	40 [label=print_factor_stmt]
+	39 -> 40
+	41 [label=string]
+	40 -> 41
+	42 [label="\"you are in the function!\""]
+	41 -> 42
+	43 [label=None]
+	39 -> 43
+	44 [label=None]
+	39 -> 44
+	45 [label=func_call_stmt]
+	16 -> 45
+	46 [label=fib]
+	45 -> 46
+	47 [label=arg_values]
+	45 -> 47
+	48 [label=string]
+	47 -> 48
+	49 [label="\"nihao\""]
+	48 -> 49
+	50 [label=number]
+	47 -> 50
+	51 [label=0]
+	50 -> 51
+	52 [label=func_call_stmt]
+	0 -> 52
+	53 [label=fib]
+	52 -> 53
+	54 [label=arg_values]
+	52 -> 54
+	55 [label=number]
+	54 -> 55
+	56 [label=1]
+	55 -> 56
+	57 [label=number]
+	54 -> 57
+	58 [label=3]
+	57 -> 58
+}
