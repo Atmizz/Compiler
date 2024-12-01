@@ -55,12 +55,6 @@ calc_grammar = r"""
           | NAME "//=" expr -> aug_div_int
           | NAME "**=" expr -> aug_pow
           | NAME "%=" expr  -> aug_mod
-          | NAME ">>=" expr -> aug_right_shift
-          | NAME "<<=" expr -> aug_left_shift
-          | NAME "&=" expr -> aug_and
-          | NAME "|=" expr -> aug_or
-          | NAME "^=" expr -> aug_xor
-
 
     break_stmt: "break" -> break_stmt
 
@@ -85,6 +79,7 @@ calc_grammar = r"""
     
     func_def: "func" NAME "(" [arg_list] ")" block -> func_def_stmt
     func_call: NAME "(" [arg_values] ")" -> func_call_stmt
+
 
     class_def: "class" NAME "{" [class_arg_list] [class_func_list] "}" -> class_def
     class_extends: "class" NAME "extends" NAME "{" [class_arg_list] [class_func_list] "}" -> class_extends
@@ -414,30 +409,6 @@ class CalculateTree(Interpreter):
         name = str(tree.children[0])
         self.modify_val(tree, name, self.get_val(tree, name) ** self.visit(tree.children[1]))
         return [1, None]
-
-    def aug_right_shift(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) >> self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_left_shift(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) << self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_or(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) | self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_xor(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) ^ self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_and(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) & self.visit(tree.children[1]))
 
     def number(self, tree):
         num_str = str(tree.children[0])

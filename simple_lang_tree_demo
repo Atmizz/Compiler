@@ -4,116 +4,350 @@ digraph {
 	0 -> 1
 	2 [label=int_type]
 	1 -> 2
-	3 [label=assign_stmt2]
+	3 [label=var_factor]
 	1 -> 3
-	4 [label=cnt]
+	4 [label=assign_stmt2]
 	3 -> 4
-	5 [label=number]
-	3 -> 5
-	6 [label=0]
-	5 -> 6
-	7 [label=func_def_stmt]
-	0 -> 7
-	8 [label=fib]
-	7 -> 8
-	9 [label=arg_list]
-	7 -> 9
-	10 [label=arg]
+	5 [label=a]
+	4 -> 5
+	6 [label=number]
+	4 -> 6
+	7 [label=1]
+	6 -> 7
+	8 [label=var_factor]
+	1 -> 8
+	9 [label=assign_stmt2]
+	8 -> 9
+	10 [label=b]
 	9 -> 10
-	11 [label=int_type]
-	10 -> 11
-	12 [label=x]
-	10 -> 12
-	13 [label=arg]
-	9 -> 13
-	14 [label=int_type]
+	11 [label=number]
+	9 -> 11
+	12 [label=2]
+	11 -> 12
+	13 [label=aug_add]
+	0 -> 13
+	14 [label=a]
 	13 -> 14
-	15 [label=y]
+	15 [label=var]
 	13 -> 15
-	16 [label=block_stmt]
-	7 -> 16
+	16 [label=b]
+	15 -> 16
 	17 [label=print_stmt]
-	16 -> 17
+	0 -> 17
 	18 [label=print_factor_stmt]
 	17 -> 18
 	19 [label=string]
 	18 -> 19
-	20 [label="\"fib x\""]
+	20 [label="\"a += b =\""]
 	19 -> 20
 	21 [label=print_factor_stmt]
 	17 -> 21
 	22 [label=var]
 	21 -> 22
-	23 [label=x]
+	23 [label=a]
 	22 -> 23
 	24 [label=None]
 	17 -> 24
 	25 [label=None]
 	17 -> 25
-	26 [label=if_else_stmt]
-	16 -> 26
-	27 [label=if_stmt]
+	26 [label=aug_sub]
+	0 -> 26
+	27 [label=a]
 	26 -> 27
-	28 [label=condition_func]
-	27 -> 28
-	29 [label=equal]
+	28 [label=var]
+	26 -> 28
+	29 [label=b]
 	28 -> 29
-	30 [label=var]
-	29 -> 30
-	31 [label=cnt]
+	30 [label=print_stmt]
+	0 -> 30
+	31 [label=print_factor_stmt]
 	30 -> 31
-	32 [label=number]
-	29 -> 32
-	33 [label=5]
+	32 [label=string]
+	31 -> 32
+	33 [label="\"a -= b =\""]
 	32 -> 33
-	34 [label=block_stmt]
-	27 -> 34
-	35 [label=return_stmt]
+	34 [label=print_factor_stmt]
+	30 -> 34
+	35 [label=var]
 	34 -> 35
-	36 [label=None]
+	36 [label=a]
 	35 -> 36
-	37 [label=self_add]
-	16 -> 37
-	38 [label=cnt]
-	37 -> 38
-	39 [label=print_stmt]
-	16 -> 39
-	40 [label=print_factor_stmt]
+	37 [label=None]
+	30 -> 37
+	38 [label=None]
+	30 -> 38
+	39 [label=aug_mul]
+	0 -> 39
+	40 [label=a]
 	39 -> 40
-	41 [label=string]
-	40 -> 41
-	42 [label="\"you are in the function!\""]
+	41 [label=var]
+	39 -> 41
+	42 [label=b]
 	41 -> 42
-	43 [label=None]
-	39 -> 43
-	44 [label=None]
-	39 -> 44
-	45 [label=func_call_stmt]
-	16 -> 45
-	46 [label=fib]
+	43 [label=print_stmt]
+	0 -> 43
+	44 [label=print_factor_stmt]
+	43 -> 44
+	45 [label=string]
+	44 -> 45
+	46 [label="\"a *= b =\""]
 	45 -> 46
-	47 [label=arg_values]
-	45 -> 47
-	48 [label=string]
+	47 [label=print_factor_stmt]
+	43 -> 47
+	48 [label=var]
 	47 -> 48
-	49 [label="\"nihao\""]
+	49 [label=a]
 	48 -> 49
-	50 [label=number]
-	47 -> 50
-	51 [label=0]
-	50 -> 51
-	52 [label=func_call_stmt]
+	50 [label=None]
+	43 -> 50
+	51 [label=None]
+	43 -> 51
+	52 [label=aug_div]
 	0 -> 52
-	53 [label=fib]
+	53 [label=a]
 	52 -> 53
-	54 [label=arg_values]
+	54 [label=var]
 	52 -> 54
-	55 [label=number]
+	55 [label=b]
 	54 -> 55
-	56 [label=1]
-	55 -> 56
-	57 [label=number]
-	54 -> 57
-	58 [label=3]
+	56 [label=print_stmt]
+	0 -> 56
+	57 [label=print_factor_stmt]
+	56 -> 57
+	58 [label=string]
 	57 -> 58
+	59 [label="\"a /= b =\""]
+	58 -> 59
+	60 [label=print_factor_stmt]
+	56 -> 60
+	61 [label=var]
+	60 -> 61
+	62 [label=a]
+	61 -> 62
+	63 [label=None]
+	56 -> 63
+	64 [label=None]
+	56 -> 64
+	65 [label=aug_mod]
+	0 -> 65
+	66 [label=a]
+	65 -> 66
+	67 [label=var]
+	65 -> 67
+	68 [label=b]
+	67 -> 68
+	69 [label=print_stmt]
+	0 -> 69
+	70 [label=print_factor_stmt]
+	69 -> 70
+	71 [label=string]
+	70 -> 71
+	72 [label="\"a %= b =\""]
+	71 -> 72
+	73 [label=print_factor_stmt]
+	69 -> 73
+	74 [label=var]
+	73 -> 74
+	75 [label=a]
+	74 -> 75
+	76 [label=None]
+	69 -> 76
+	77 [label=None]
+	69 -> 77
+	78 [label=aug_pow]
+	0 -> 78
+	79 [label=a]
+	78 -> 79
+	80 [label=var]
+	78 -> 80
+	81 [label=b]
+	80 -> 81
+	82 [label=print_stmt]
+	0 -> 82
+	83 [label=print_factor_stmt]
+	82 -> 83
+	84 [label=string]
+	83 -> 84
+	85 [label="\"a **= b =\""]
+	84 -> 85
+	86 [label=print_factor_stmt]
+	82 -> 86
+	87 [label=var]
+	86 -> 87
+	88 [label=a]
+	87 -> 88
+	89 [label=None]
+	82 -> 89
+	90 [label=None]
+	82 -> 90
+	91 [label=aug_div_int]
+	0 -> 91
+	92 [label=a]
+	91 -> 92
+	93 [label=var]
+	91 -> 93
+	94 [label=b]
+	93 -> 94
+	95 [label=print_stmt]
+	0 -> 95
+	96 [label=print_factor_stmt]
+	95 -> 96
+	97 [label=string]
+	96 -> 97
+	98 [label="\"a //= b =\""]
+	97 -> 98
+	99 [label=print_factor_stmt]
+	95 -> 99
+	100 [label=var]
+	99 -> 100
+	101 [label=a]
+	100 -> 101
+	102 [label=None]
+	95 -> 102
+	103 [label=None]
+	95 -> 103
+	104 [label=assign_stmt]
+	0 -> 104
+	105 [label=int_type]
+	104 -> 105
+	106 [label=var_factor]
+	104 -> 106
+	107 [label=assign_stmt2]
+	106 -> 107
+	108 [label=c]
+	107 -> 108
+	109 [label=number]
+	107 -> 109
+	110 [label=2]
+	109 -> 110
+	111 [label=aug_left_shift]
+	0 -> 111
+	112 [label=c]
+	111 -> 112
+	113 [label=number]
+	111 -> 113
+	114 [label=1]
+	113 -> 114
+	115 [label=print_stmt]
+	0 -> 115
+	116 [label=print_factor_stmt]
+	115 -> 116
+	117 [label=string]
+	116 -> 117
+	118 [label="\"c <<= 1 =\""]
+	117 -> 118
+	119 [label=print_factor_stmt]
+	115 -> 119
+	120 [label=var]
+	119 -> 120
+	121 [label=c]
+	120 -> 121
+	122 [label=None]
+	115 -> 122
+	123 [label=None]
+	115 -> 123
+	124 [label=aug_right_shift]
+	0 -> 124
+	125 [label=c]
+	124 -> 125
+	126 [label=number]
+	124 -> 126
+	127 [label=1]
+	126 -> 127
+	128 [label=print_stmt]
+	0 -> 128
+	129 [label=print_factor_stmt]
+	128 -> 129
+	130 [label=string]
+	129 -> 130
+	131 [label="\"c >>= 1 =\""]
+	130 -> 131
+	132 [label=print_factor_stmt]
+	128 -> 132
+	133 [label=var]
+	132 -> 133
+	134 [label=c]
+	133 -> 134
+	135 [label=None]
+	128 -> 135
+	136 [label=None]
+	128 -> 136
+	137 [label=aug_or]
+	0 -> 137
+	138 [label=c]
+	137 -> 138
+	139 [label=number]
+	137 -> 139
+	140 [label=2]
+	139 -> 140
+	141 [label=print_stmt]
+	0 -> 141
+	142 [label=print_factor_stmt]
+	141 -> 142
+	143 [label=string]
+	142 -> 143
+	144 [label="\"c |= 2 =\""]
+	143 -> 144
+	145 [label=print_factor_stmt]
+	141 -> 145
+	146 [label=var]
+	145 -> 146
+	147 [label=c]
+	146 -> 147
+	148 [label=None]
+	141 -> 148
+	149 [label=None]
+	141 -> 149
+	150 [label=aug_and]
+	0 -> 150
+	151 [label=c]
+	150 -> 151
+	152 [label=number]
+	150 -> 152
+	153 [label=1]
+	152 -> 153
+	154 [label=print_stmt]
+	0 -> 154
+	155 [label=print_factor_stmt]
+	154 -> 155
+	156 [label=string]
+	155 -> 156
+	157 [label="\"c &= 1 =\""]
+	156 -> 157
+	158 [label=print_factor_stmt]
+	154 -> 158
+	159 [label=var]
+	158 -> 159
+	160 [label=c]
+	159 -> 160
+	161 [label=None]
+	154 -> 161
+	162 [label=None]
+	154 -> 162
+	163 [label=aug_xor]
+	0 -> 163
+	164 [label=c]
+	163 -> 164
+	165 [label=number]
+	163 -> 165
+	166 [label=1]
+	165 -> 166
+	167 [label=print_stmt]
+	0 -> 167
+	168 [label=print_factor_stmt]
+	167 -> 168
+	169 [label=string]
+	168 -> 169
+	170 [label="\"c ^= 1 =\""]
+	169 -> 170
+	171 [label=print_factor_stmt]
+	167 -> 171
+	172 [label=var]
+	171 -> 172
+	173 [label=c]
+	172 -> 173
+	174 [label=None]
+	167 -> 174
+	175 [label=None]
+	167 -> 175
 }

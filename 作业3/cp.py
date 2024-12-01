@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 return code table:
 0 - 不可以执行
@@ -22,7 +21,7 @@ calc_grammar = r"""
 
     ?comment_stmt: COMMENT                    -> comment_stmt
     
-    ?simple_stmt: (expr | print | input | assign | self_calc | reassign | aug_op | break_stmt | continue_stmt | return_stmt | array_def | array_assign)
+    ?simple_stmt: (expr | print | input | assign | self_calc | reassign | bit_op | break_stmt | continue_stmt | return_stmt | array_def | array_assign)
     
     print: "print" "(" (print_factor)*  [sep_factor] [end_factor]")" -> print_stmt
     print_factor: [","] + expr -> print_factor_stmt
@@ -48,19 +47,13 @@ calc_grammar = r"""
         
     reassign: NAME "=" expr       -> reassign_stmt
     
-    aug_op: NAME "+=" expr -> aug_add
+    bit_op: NAME "+=" expr -> aug_add
           | NAME "-=" expr -> aug_sub
           | NAME "*=" expr -> aug_mul
           | NAME "/=" expr -> aug_div
           | NAME "//=" expr -> aug_div_int
           | NAME "**=" expr -> aug_pow
           | NAME "%=" expr  -> aug_mod
-          | NAME ">>=" expr -> aug_right_shift
-          | NAME "<<=" expr -> aug_left_shift
-          | NAME "&=" expr -> aug_and
-          | NAME "|=" expr -> aug_or
-          | NAME "^=" expr -> aug_xor
-
 
     break_stmt: "break" -> break_stmt
 
@@ -85,6 +78,7 @@ calc_grammar = r"""
     
     func_def: "func" NAME "(" [arg_list] ")" block -> func_def_stmt
     func_call: NAME "(" [arg_values] ")" -> func_call_stmt
+
 
     class_def: "class" NAME "{" [class_arg_list] [class_func_list] "}" -> class_def
     class_extends: "class" NAME "extends" NAME "{" [class_arg_list] [class_func_list] "}" -> class_extends
@@ -184,7 +178,6 @@ class CalculateTree(Interpreter):
     def print_factor_stmt(self, tree):
         # print(self.visit(tree.children[0]), end='')
         self.printResult += str(self.visit(tree.children[0]))
-        print(self.printResult)
         return [1, None]
 
     def print_sep_stmt(self, tree):
@@ -415,37 +408,13 @@ class CalculateTree(Interpreter):
         self.modify_val(tree, name, self.get_val(tree, name) ** self.visit(tree.children[1]))
         return [1, None]
 
-    def aug_right_shift(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) >> self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_left_shift(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) << self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_or(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) | self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_xor(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) ^ self.visit(tree.children[1]))
-        return [1, None]
-
-    def aug_and(self, tree):
-        name = str(tree.children[0])
-        self.modify_val(tree, name, self.get_val(tree, name) & self.visit(tree.children[1]))
-
     def number(self, tree):
         num_str = str(tree.children[0])
         return int(num_str) if '.' not in num_str else float(num_str)
 
     def string(self, tree):
         str =  tree.children[0][1:-1]
-        return str
+        return bytes(str, "utf-8").decode("unicode_escape")
 
     def int_type(self, tree):
         return '<class \'int\'>'
@@ -587,8 +556,7 @@ class CalculateTree(Interpreter):
             elif condition[0] == 4:
                 return condition
             condition = self.visit(tree.children[1])
-            print("condition", condition)
-            if not condition[0]:
+            if not condition:
                 break
         self.local_vars_stack.pop()
         return [1, None]
@@ -994,7 +962,6 @@ class Main():
     def run(self):
         interpreter.__init__()
         code = self.textEdit.toPlainText()
-        print("code", code)
         parsed_tree = calc_parser.parse(code)
         interpreter.visit(parsed_tree)
         self.result.setPlainText(interpreter.printResult)
